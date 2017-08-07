@@ -55,6 +55,8 @@ Page.hook('beforeValidate', (page, options) => {
     page.urlTitle = generateUrlTitle(page.title);
 });
 
+Page.belongsTo(User, {as: 'author'});
+
 
 module.exports = {
     db: db,

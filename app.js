@@ -18,7 +18,7 @@ nunjucks.configure('views', {noCache: true});
 
 app.use(routes);
 
-models.db.sync({logging: true})
+models.db.sync({})
     .then(() => {
         app.listen(1337, function(err) {
             if(err) console.log(err);
