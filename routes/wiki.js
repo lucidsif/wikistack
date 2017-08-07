@@ -41,13 +41,14 @@ wikiRouter.post('/', function(req, res, next) {
         }
      }).then((response) => {
          console.log('results of user.findOne');
-         console.log(response);
          var user = response
          // if user exists
+         console.log(user.dataValues);
+         if (user.dataValues.hasOwnProperty('name')) {
              console.log('existing user');
-         if (user) {
              return user;
          } else { // if user does not exist, create the user
+             console.log('new user');
              return User.create({
                  name: data['author-name'],
                  email: data.email,
@@ -63,7 +64,7 @@ wikiRouter.post('/', function(req, res, next) {
          });
      }).then((response) => {
          console.log('post was created');
-         console.log(response);
+         res.redirect('/');
          })
          .catch(console.err);
 });

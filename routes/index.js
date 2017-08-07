@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
     models.Page.findAll()
         .then(function(response){
             var pages = response.map((instance) => instance.dataValues);
-            console.log(pages);
+            //console.log(pages);
             return res.render('index', {pages: pages});
         })
         .catch(console.error)
